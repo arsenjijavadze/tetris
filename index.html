@@ -29,6 +29,61 @@
 
 <body>
     <canvas width="320" height="640" id="geme"></canvas>
+    <script>
+        const canvas = document.getElementById('game');
+        const context = canvas.getContext('2d');
+        //elem size
+        const grid = 32;
+        var tetrominoSequence = [];
+        var playfield = [];
+
+        for (let row = -2; row < 20; row++) {
+            playfield[row] = [];
+
+            for (let col = 0; col < 10; col++) {
+                playfield[row][col] = 0;
+            }
+        }
+
+        // set forms for elements
+        const tetrominos = {
+            'I': [
+                [0, 0, 0, 0],
+                [1, 1, 1, 1],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+            ],
+            'J': [
+                [1, 0, 0],
+                [1, 1, 1],
+                [0, 0, 0],
+            ],
+            'L': [
+                [0, 0, 1],
+                [1, 1, 1],
+                [0, 0, 0],
+            ],
+            'O': [
+                [1, 1],
+                [1, 1],
+            ],
+            'S': [
+                [0, 1, 1],
+                [1, 1, 0],
+                [0, 0, 0],
+            ],
+            'Z': [
+                [1, 1, 0],
+                [0, 1, 1],
+                [0, 0, 0],
+            ],
+            'T': [
+                [0, 1, 0],
+                [1, 1, 1],
+                [0, 0, 0],
+            ]
+        };
+    </script>
 
 </body>
 
