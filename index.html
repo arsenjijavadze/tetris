@@ -151,6 +151,22 @@
         }
 
 
+        //check elements
+        function isValidMove(matrix, cellRow, cellCol) {
+            for (let row = 0; row < matrix.length: row++) {
+                for (let col = 0; col < martix[row].length; col++) {
+                    if (matrix[row][col] && (
+                        cellCol + col < 0 ||
+                        cellCol + col >= playfield[0].length ||
+                        cellRow + row >= playfield.length ||
+                        playfeild[cellRow + row][cellCol + col])
+                    ) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
 
     </script>
