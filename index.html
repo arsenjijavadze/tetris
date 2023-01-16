@@ -116,6 +116,14 @@
             //check for line clears starting from the bottom and working our way up
             for (let row = playfield.length - 1; row >= 0;) {
                 if (playfield[row].every(cell => !!cell)) {
+                    score += 10;
+
+                    if (score > record) {
+                        record = score;
+                        localStorage.record = record;
+                        recordName = name;
+                        localStorage.recordName = recordName;
+                    }
                     //clean it and step down
                     for (let r = row; r >= 0; r--) {
                         for (let c = 0; c < playfield[r].length; c++) {
@@ -230,6 +238,14 @@
         let level = 1;
         let recordName = '';
 
+        name = prompt('Your name', '');
+
+        var Storage_size = localStorage.length;
+        if (Storage_size > 0) {
+            record = localStorage.record;
+            recordName = localStorage.recordName;
+        }
+
         function showScore() {
             contextScore.clearRect(0, 0, canvasScore.width, canvasScore.height);
             contextScore.globalAlpha = 1;
@@ -240,6 +256,7 @@
             contextScore.fillText('Champ: ' + recordName, 160, 20);
             contextScore.fillText('Record: ' + record, 160, 50);
         }
+
 
         //game loop
         ////////////////////////////////////////////////////////// game loop /////////////////////
