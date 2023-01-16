@@ -29,6 +29,7 @@
 
 <body>
     <canvas width="320" height="640" id="game"></canvas>
+    <canvas style="border: 1px" width="320" height="100" id="score"></canvas>
     <script>
         // get a random integer between the range of [min, max]
 
@@ -150,6 +151,8 @@
 
         const canvas = document.getElementById('game');
         const context = canvas.getContext('2d');
+        const canvasScore = document.getElementById('score');
+        const contextScore = canvasScore.getContext('2d');
         //elem size
         const grid = 32;
         var tetrominoSequence = [];
@@ -222,11 +225,28 @@
         // flag of the end gamge, on the start don't active
         let gameOver = false;
 
+        let score = 0;
+        let record = 0;
+        let level = 1;
+        let recordName = '';
+
+        function showScore() {
+            contextScore.clearRect(0, 0, canvasScore.width, canvasScore.height);
+            contextScore.globalAlpha = 1;
+            contextScore.fillStyle = 'white';
+            contextScore.font = '18px Courier New';
+            contextScore.fillText('Level: ' + level, 15, 20);
+            contextScore.fillText('Score: ' + score, 15, 50);
+            contextScore.fillText('Champ: ' + recordName, 160, 20);
+            contextScore.fillText('Record: ' + record, 160, 50);
+        }
+
         //game loop
         ////////////////////////////////////////////////////////// game loop /////////////////////
         function loop() {
             rAF = requestAnimationFrame(loop);
             context.clearRect(0, 0, canvas.width, canvas.height);
+            showScore();
 
             for (let row = 0; row < 20; row++) {
                 for (let col = 0; col < 10; col++) {
