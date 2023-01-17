@@ -117,6 +117,7 @@
             for (let row = playfield.length - 1; row >= 0;) {
                 if (playfield[row].every(cell => !!cell)) {
                     score += 10;
+                    level = Math.floor(score / 100) + 1;
 
                     if (score > record) {
                         record = score;
@@ -277,7 +278,7 @@
             }
             //draw the active tetromino
             if (tetromino) {
-                if (++count > 35) {
+                if (++count > (20 - level)) {
                     tetromino.row++;
                     count = 0;
 
